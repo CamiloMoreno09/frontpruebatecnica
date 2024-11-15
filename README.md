@@ -15,10 +15,12 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
 1. Clona este repositorio en tu máquina local:
 
 En cmd vamos a correr los siguientes comandos:
+
    git clone https://github.com/CamiloMoreno09/frontpruebatecnica.git
+   
    cd frontpruebatecnica
 
-Luego, vamos a intarlar las dependencias:
+Luego, vamos a instalar las dependencias:
 npm install
 Y finalmente se correria la aplicación
 ng serve
