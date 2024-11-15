@@ -1,0 +1,63 @@
+<div class="container">
+    <h1>Login</h1>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          [(ngModel)]="email"
+          required
+          #emailInput="ngModel"
+          [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}"
+        />
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="error-messages">
+          <span *ngIf="emailInput.errors?.['required']">Email es requerido.</span>
+          <span *ngIf="emailInput.errors?.['email']">Debe ser un email válido.</span>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <div class="password-container">
+          <input
+            [type]="passwordFieldType"
+            id="password"
+            name="password"
+            class="form-control"
+            [(ngModel)]="password"
+            required
+            #passwordInput="ngModel"
+            [ngClass]="{'is-invalid': passwordInput.invalid && passwordInput.touched}"
+          />
+          <span
+            id="togglePassword"
+            class="eye-icon"
+            (click)="togglePasswordVisibility()"
+          >
+            <i [class]="passwordFieldType === 'password' ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+          </span>
+        </div>
+        <!-- Password Validation Error -->
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error-messages">
+          <span *ngIf="passwordInput.errors?.['required']">La contraseña es requerida.</span>
+        </div>
+      </div>
+  
+      <div class="button-container">
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+          Ingresar
+        </button>
+        <button type="button" class="btn btn-secondary" routerLink="/register">
+          Registrarse
+        </button>
+      </div>
+    </form>
+  
+    <ul *ngIf="errorMessages.length > 0" class="error-messages">
+      <li *ngFor="let error of errorMessages">{{ error }}</li>
+    </ul>
+  </div>
+  

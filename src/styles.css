@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos globales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #003d8f, #800000); /* Gradiente de fondo */
+    height: 100vh;            /* Asegura que el body ocupe toda la altura de la pantalla */
+    margin: 0;                /* Eliminar márgenes por defecto */
+    display: flex;
+    justify-content: center;  /* Centrado horizontal */
+    align-items: center;      /* Centrado vertical */
+    color: #fff;              /* Color blanco para el texto */
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 360px;  /* Ancho máximo del formulario */
+    text-align: center;
+    color: #333;
+  }
+  

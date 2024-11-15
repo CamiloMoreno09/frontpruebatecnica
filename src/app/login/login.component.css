@@ -1,0 +1,115 @@
+/* Estilos del formulario */
+.container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 360px; /* Ancho máximo del formulario */
+    text-align: center;
+    color: #333;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    text-align: left;
+  }
+  
+  input[type='email'],
+  input[type='password'] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  input[type='email']:focus,
+  input[type='password']:focus {
+    border-color: #9c5aee;
+    outline: none;
+  }
+  
+  button {
+    width: 40%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #003d8f;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 5px 1%;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  button:active {
+    transform: translateY(1px);
+  }
+  
+  .error-messages {
+    margin-top: 15px;
+    color: #ff4d4d;
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .error-messages li {
+    margin-bottom: 10px;
+  }
+  
+  .password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  #password {
+    padding: 12px;
+    padding-right: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .eye-icon:hover {
+    color: #007bff;
+  }
+  
+  .eye-icon i {
+    font-size: 18px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  
