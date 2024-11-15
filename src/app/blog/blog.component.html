@@ -1,2 +1,67 @@
-<h2>Bienvenido al Blog</h2>
-<p>¡Esta es tu página de blog después de iniciar sesión correctamente!</p>
+<div class="container my-5">
+    <div class="d-flex justify-content-end mt-2">
+        <button type="button" class="btn btn-primary" (click)="logout()">
+          Cerrar sesión
+        </button>
+      </div>
+    <h1 class="text-center mb-4">Blog</h1>
+  
+    <!-- Botón para abrir el modal -->
+    <div class="text-center mb-4">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createPostModal">
+        Crear un Nuevo Post
+      </button>
+    </div>
+
+
+    <!-- Modal para Crear Post -->
+    <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createPostModalLabel">Crear un Nuevo Post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group mb-3">
+                <label for="title" class="form-label">Título</label>
+                <input type="text" id="title" [(ngModel)]="title" name="title" class="form-control" required>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="content" class="form-label">Contenido</label>
+                <textarea id="content" [(ngModel)]="content" name="content" class="form-control" rows="5" required></textarea>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="category" class="form-label">Categoría</label>
+                <select id="category" [(ngModel)]="category" name="category" class="form-control" required>
+                  <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+                </select>
+              </div>
+  
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Crear Post</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="mb-4">
+      <input type="text" [(ngModel)]="searchTerm" (keyup)="onSearch()" class="form-control" placeholder="Buscar categoría..." />
+    </div>
+  
+    <div *ngIf="posts.length === 0" class="alert alert-info">
+      <p>No hay posts disponibles.</p>
+    </div>
+  
+    <div *ngFor="let post of posts" class="post mb-4 p-3 border rounded">
+      <h2><strong>Título:</strong> {{ post.title }}</h2>
+      <p><strong>Contenido:</strong> {{ post.content }}</p>
+      <p><strong>Categoría:</strong> {{ post.category }}</p>
+      <p><strong>Usuario:</strong> {{ post.user_name }}</p> 
+    </div>
+</div>

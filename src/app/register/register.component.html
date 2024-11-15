@@ -1,15 +1,12 @@
-<!-- src/app/register/register.component.html -->
 <div class="register-container">
-    <h2>Crear Cuenta</h2>
+    <h2 style="color: aliceblue;">Crear Cuenta</h2>
   
-    <!-- Mostrar mensajes de error -->
     <div *ngIf="errorMessages.length > 0" class="alert alert-danger">
       <ul>
         <li *ngFor="let message of errorMessages">{{ message }}</li>
       </ul>
     </div>
   
-    <!-- Formulario de Registro -->
     <form (ngSubmit)="onSubmit()">
       <div>
         <label for="name" style="color:black">Nombre</label>
@@ -28,10 +25,8 @@
   
       
       <div class="button-container">
-        <!-- Botón Registrarse -->
-        <button type="submit" style="width:190px;">Registrarse</button>
+        <button type="submit" style="width:190px;margin-right: 5px;">Registrarse</button>
   
-        <!-- Botón Volver -->
         <a routerLink="/login" class="back-button">
           <button type="button" class="back-button" style="width: 190px;background-color: black;">Volver</button>
         </a>

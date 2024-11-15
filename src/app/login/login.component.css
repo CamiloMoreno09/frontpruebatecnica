@@ -1,14 +1,28 @@
-/* Estilos del formulario */
+:host {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    height: 100vh; 
+    max-height: 100%;
+    width:  100vw;      
+    margin: 0;               
+    background: linear-gradient(135deg, #003d8f, #800000); /* Gradiente de fondo */
+    color: black;
+  }
+  
 .container {
     background: #ffffff;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 360px; /* Ancho máximo del formulario */
+    max-width: 360px; 
     text-align: center;
     color: #333;
-  }
+    margin: 0 auto;  
+    position: relative;  
+    z-index: 1;  
+}
   
   h1 {
     margin-bottom: 20px;

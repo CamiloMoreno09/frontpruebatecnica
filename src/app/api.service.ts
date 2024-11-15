@@ -8,18 +8,24 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:8000/api/'; 
+  private apiUrl = 'http://localhost:8000/api/'; // Cambia esta URL por la de tu backend
 
   constructor(private http: HttpClient) { }
 
+  // Obtiene las opciones del header con el token de autorización
   private getHttpOptions() {
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json;charset=utf8',
-        'Accept': 'application/json',
-      }),
-      withCredentials: true 
-    };
+    const token = localStorage.getItem('auth_token');  // Obtenemos el token almacenado en localStorage
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json;charset=utf8',
+      'Accept': 'application/json',
+    });
+
+    // Si el token existe, lo agregamos a los headers
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return { headers: headers, withCredentials: true };
   }
 
   // Método para enviar la solicitud de login
@@ -41,6 +47,57 @@ export class ApiService {
         catchError(this.errorHandle)
       );
   }
+
+  // Método para obtener los datos del usuario (con autenticación)
+  public getUserData(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}user`, this.getHttpOptions())
+      .pipe(
+        catchError(this.errorHandle)
+      );
+  }
+
+  // Método para cerrar sesión
+  public logout(): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}logout`, {}, this.getHttpOptions())
+      .pipe(
+        catchError(this.errorHandle)
+      );
+  }
+
+  public getPostsByCategory(categoryId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}posts/${categoryId}`, this.getHttpOptions())
+      .pipe(
+        catchError(this.errorHandle)
+      );
+  }
+  
+  // Método para crear un post
+  public createPost(title: string, content: string, categoryId: number): Observable<any> {
+    const postData = { title, content, category: categoryId };
+  
+    return this.http.post<any>(`${this.apiUrl}posts`, postData, this.getHttpOptions())
+      .pipe(
+        catchError(this.errorHandle)
+      );
+  }
+
+  public getCategories(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}categories`, this.getHttpOptions())
+      .pipe(
+        catchError(this.errorHandle)
+      );
+  }
+
+  getPosts(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}posts`);
+  }
+
+  // Método para buscar posts
+  searchPosts(searchTerm: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}posts/search?search=${searchTerm}`);
+  }
+
+  
 
 
   // Manejo de errores globales para las solicitudes
