@@ -22,5 +22,6 @@ En cmd vamos a correr los siguientes comandos:
 
 Luego, vamos a instalar las dependencias:
 npm install
-Y finalmente se correria la aplicación
+
+Y finalmente se correria la aplicación:
 ng serve
